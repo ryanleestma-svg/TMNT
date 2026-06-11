@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teenage Mutant Ninja Turtles — Sewer Showdown</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="game-wrap">
+    <canvas id="game" width="900" height="540"></canvas>
+
+    <!-- Title / character select screen -->
+    <div id="menu" class="overlay">
+      <h1>TEENAGE MUTANT<br /><span class="green">NINJA TURTLES</span></h1>
+      <p class="subtitle">SEWER SHOWDOWN</p>
+      <p class="pick">Choose your turtle:</p>
+      <div id="roster"></div>
+      <button id="start-btn" disabled>SELECT A TURTLE</button>
+      <div class="controls">
+        <strong>Controls</strong>
+        <span>← → ↑ ↓ / WASD — Move</span>
+        <span>J or SPACE — Attack</span>
+        <span>K — Jump</span>
+        <span>L — Special (uses meter)</span>
+      </div>
+    </div>
+
+    <!-- Game over screen -->
+    <div id="gameover" class="overlay hidden">
+      <h1 id="go-title">GAME OVER</h1>
+      <p id="go-score"></p>
+      <button id="restart-btn">PLAY AGAIN</button>
+    </div>
+
+    <!-- HUD -->
+    <div id="hud" class="hidden">
+      <div class="hud-left">
+        <div id="portrait"></div>
+        <div class="bars">
+          <div class="bar-label">HEALTH</div>
+          <div class="bar"><div id="health-fill"></div></div>
+          <div class="bar-label">SPECIAL</div>
+          <div class="bar special"><div id="special-fill"></div></div>
+        </div>
+      </div>
+      <div class="hud-right">
+        <div id="score">SCORE 0</div>
+        <div id="wave">WAVE 1</div>
+        <div id="lives">🐢 x 3</div>
+      </div>
+    </div>
+  </div>
+
+  <script src="game.js"></script>
+</body>
+</html>
