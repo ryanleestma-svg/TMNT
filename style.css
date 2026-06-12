@@ -142,6 +142,23 @@ button:disabled { background: #555; color: #999; box-shadow: 0 4px 0 #333; curso
 #health-fill { height: 100%; width: 100%; background: linear-gradient(90deg,#e23,#f86); transition: width 0.2s; }
 #special-fill { height: 100%; width: 0%; background: linear-gradient(90deg,#39f,#6cf); transition: width 0.15s; }
 
+/* Boss health bar */
+#boss-hud {
+  position: absolute;
+  top: 70px; left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  text-align: center;
+  z-index: 6;
+  pointer-events: none;
+}
+#boss-name {
+  font-size: 14px; font-weight: 900; letter-spacing: 4px;
+  color: #ff4d4d; text-shadow: 2px 2px 0 #000; margin-bottom: 3px;
+}
+.bar.boss { width: 100%; height: 14px; }
+#boss-fill { height: 100%; width: 100%; background: linear-gradient(90deg,#a00,#f33,#f88); transition: width 0.12s; }
+
 .hud-right { text-align: right; }
 .hud-right div { font-weight: 900; letter-spacing: 2px; text-shadow: 2px 2px 0 #000; font-size: 16px; }
 #wave { color: #ffd23f; }

@@ -19,10 +19,10 @@
       <button id="start-btn" disabled>SELECT A TURTLE</button>
       <div class="controls">
         <strong>Controls</strong>
-        <span>← → ↑ ↓ / WASD — Move</span>
-        <span>J or SPACE — Attack</span>
-        <span>K — Jump</span>
-        <span>L — Special (uses meter)</span>
+        <span>← → ↑ ↓ / WASD — Move (double-tap to run)</span>
+        <span>J or SPACE — Attack  •  hold into a foe to GRAB, then attack to THROW</span>
+        <span>K — Jump  •  attack in the air for a JUMP KICK</span>
+        <span>L — Special spin (costs a little health)</span>
       </div>
     </div>
 
@@ -46,9 +46,15 @@
       </div>
       <div class="hud-right">
         <div id="score">SCORE 0</div>
-        <div id="wave">WAVE 1</div>
+        <div id="wave">BIG APPLE, 3 AM</div>
         <div id="lives">🐢 x 3</div>
       </div>
+    </div>
+
+    <!-- Boss health bar -->
+    <div id="boss-hud" class="hidden">
+      <div id="boss-name">SHREDDER</div>
+      <div class="bar boss"><div id="boss-fill"></div></div>
     </div>
   </div>
 
