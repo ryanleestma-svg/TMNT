@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
   <title>Teenage Mutant Ninja Turtles — Sewer Showdown</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -10,23 +10,38 @@
   <div id="game-wrap">
     <canvas id="game" width="900" height="540"></canvas>
 
-    <!-- Title / character select screen -->
+    <!-- Title / character select -->
     <div id="menu" class="overlay">
       <h1>TEENAGE MUTANT<br /><span class="green">NINJA TURTLES</span></h1>
       <p class="subtitle">SEWER SHOWDOWN</p>
-      <p class="pick">Choose your turtle:</p>
+
+      <div id="mode-row">
+        <span class="mode-label">PLAYERS</span>
+        <button class="mode-btn selected" data-np="1">1P</button>
+        <button class="mode-btn" data-np="2">2P</button>
+      </div>
+
+      <p class="pick" id="pick-label">Choose your turtle:</p>
+      <div id="slots" class="hidden"></div>
       <div id="roster"></div>
       <button id="start-btn" disabled>SELECT A TURTLE</button>
-      <div class="controls">
-        <strong>Controls</strong>
+
+      <div class="controls" id="controls-1p">
+        <strong>1-PLAYER CONTROLS</strong>
         <span>← → ↑ ↓ / WASD — Move (double-tap to run)</span>
         <span>J or SPACE — Attack  •  hold into a foe to GRAB, then attack to THROW</span>
-        <span>K — Jump  •  attack in the air for a JUMP KICK</span>
-        <span>L — Special spin (costs a little health)</span>
+        <span>K — Jump (attack in air = JUMP KICK)  •  L — Special spin</span>
+        <span class="dim">Gamepad &amp; touch supported</span>
+      </div>
+      <div class="controls hidden" id="controls-2p">
+        <strong>2-PLAYER CONTROLS</strong>
+        <span><b>P1:</b> WASD move · F attack · G jump · H special</span>
+        <span><b>P2:</b> Arrows move · . attack · / jump · , special</span>
+        <span class="dim">Two gamepads also work — one per player</span>
       </div>
     </div>
 
-    <!-- Game over screen -->
+    <!-- Game over -->
     <div id="gameover" class="overlay hidden">
       <h1 id="go-title">GAME OVER</h1>
       <p id="go-score"></p>
@@ -36,12 +51,21 @@
     <!-- HUD -->
     <div id="hud" class="hidden">
       <div class="hud-left">
-        <div id="portrait"></div>
-        <div class="bars">
-          <div class="bar-label">HEALTH</div>
-          <div class="bar"><div id="health-fill"></div></div>
-          <div class="bar-label">SPECIAL</div>
-          <div class="bar special"><div id="special-fill"></div></div>
+        <div class="pinfo" id="pinfo1">
+          <div class="portrait" id="portrait"></div>
+          <div class="bars">
+            <div class="bar-label">P1</div>
+            <div class="bar"><div id="health-fill"></div></div>
+            <div class="bar special"><div id="special-fill"></div></div>
+          </div>
+        </div>
+        <div class="pinfo hidden" id="pinfo2">
+          <div class="portrait" id="portrait2"></div>
+          <div class="bars">
+            <div class="bar-label">P2</div>
+            <div class="bar"><div id="health-fill2"></div></div>
+            <div class="bar special"><div id="special-fill2"></div></div>
+          </div>
         </div>
       </div>
       <div class="hud-right">
@@ -55,6 +79,21 @@
     <div id="boss-hud" class="hidden">
       <div id="boss-name">SHREDDER</div>
       <div class="bar boss"><div id="boss-fill"></div></div>
+    </div>
+
+    <!-- Touch controls -->
+    <div id="touch" class="hidden">
+      <div id="dpad">
+        <button class="tb" data-act="up">▲</button>
+        <button class="tb" data-act="left">◀</button>
+        <button class="tb" data-act="down">▼</button>
+        <button class="tb" data-act="right">▶</button>
+      </div>
+      <div id="tbtns">
+        <button class="tb big" data-act="attack">ATK</button>
+        <button class="tb big" data-act="jump">JMP</button>
+        <button class="tb big" data-act="special">SP</button>
+      </div>
     </div>
   </div>
 
